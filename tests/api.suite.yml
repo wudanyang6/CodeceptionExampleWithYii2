@@ -1,0 +1,35 @@
+# actor: ApiTester
+class_name: ApiTester
+modules:
+    enabled:
+        - \tests\Helper\Api
+        - Asserts
+        - REST:
+            # url: https://qaocr.knowbox.cn:8001/  Yii2 不用 url
+            # 可以直接使用 Yii2 那么，就不会真正的执行 http 请求
+            depends: Yii2
+#            depends: PhpBrowser
+            part: Json
+        - Yii2:
+            # 是否使用事物，如果使用的话，数据不会真正在数据库中生成，但是自增id会继续增加
+            transaction: false
+        - Redis:
+            host: '127.0.0.1'
+            port: 6379
+            database: 0
+            cleanupBefore: 'never'
+
+
+coverage:
+    enabled: true
+#    remote: true
+    c3_url: 'http://localhost/'
+    remote_config: 'codeception.yml'
+    include:
+        - backend/modules/*.php
+        - backend/models/*.php
+#        - ../console/*
+#    white_list:
+#        include:
+#            - ../models/*
+#            - ../modules/*

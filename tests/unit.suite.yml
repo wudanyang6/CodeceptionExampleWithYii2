@@ -1,0 +1,23 @@
+# Codeception Test Suite Configuration
+#
+# Suite for unit or integration tests.
+
+#actor: UnitTester
+class_name: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - \tests\Helper\Unit
+        - Yii2:
+            # 是否使用事物，如果使用的话，数据不会真正在数据库中生成，但是自增id会继续增加
+            transaction: false
+        - Redis:
+              host: '127.0.0.1'
+              port: 6379
+              database: 0
+              cleanupBefore: 'never'
+coverage:
+    enabled: true
+    include:
+        - backend/modules/*.php
+        - backend/models/*.php

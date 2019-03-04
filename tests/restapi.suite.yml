@@ -1,0 +1,27 @@
+# actor: ApiTester
+class_name: RestApiTester
+modules:
+    enabled:
+        - \tests\Helper\RestApi
+        - REST:
+              url: https://qaocr.knowbox.cn:8001/
+              # 可以直接使用 Yii2 那么，就不会真正的执行 http 请求
+              #              depends: Yii2
+              depends: PhpBrowser
+              part: Json
+
+coverage:
+    enabled: false
+    remote: true
+    c3_url: 'https://qaocr.knowbox.cn:8001//c3.php'
+    remote_config: 'codeception.yml'
+    include:
+        - backend/modules/*
+        - backend/models/*
+        - backend/exceptions/*
+        - backend/web/index.php
+#        - ../console/*
+#    white_list:
+#        include:
+#            - ../models/*
+#            - ../modules/*
