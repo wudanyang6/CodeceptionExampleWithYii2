@@ -13,11 +13,3 @@ settings:
     bootstrap: _bootstrap.php
     memory_limit: 1024M
     colors: true
-
-modules:
-    enabled:
-        - Yii2:
-              part: [orm]
-    config:
-        Yii2:
-            configFile: 'config/web.php'
